@@ -31,6 +31,7 @@ dispatch(signUserStart())
       
       const {data}= await $post(`user/register/`,userdata);
       console.log(data);
+
       dispatch(signUserSuccess(data))
 
         navigate('/login')

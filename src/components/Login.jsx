@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useNavigate } from "react-router-dom"
 import { signUserFailure, signUserStart, signUserSuccess } from "../slice/auth"
 import { useHttp } from "../service/httpRequest"
-
+import { setItem } from '../helpers/persistance'
 
 const Login = () => {
   const { $post } = useHttp()
@@ -26,6 +26,7 @@ const Login = () => {
     try {
       const {data}= await $post(`user/login/`,userdata)
       console.log(data);
+      setItem('token',data.token)
       dispatch(signUserSuccess(data))
      
         navigate('/hujjat')

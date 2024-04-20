@@ -19,8 +19,9 @@ const fileDown=async()=>{
   })
   .then((res)=>{
     console.log(res)
+
      const downloadUrl = window.URL.createObjectURL(new Blob([res.data]));
-        
+    
         const link = document.createElement('a');
 
         link.href = downloadUrl;
@@ -30,7 +31,6 @@ const fileDown=async()=>{
         document.body.appendChild(link);
 
         link.click();
-
         link.remove();
    window.URL.revokeObjectURL(downloadUrl)
 
@@ -64,7 +64,7 @@ try {
   faylsuccesSet(data.output_papka)
   console.log(data);
   setYuklash(true)
-  setMSg('Yulash muaffaqiyatli boldi!')
+  setMSg('Yulash muvaffaqiyatli boldi!')
 } catch (error) {
   setMSg('Yuklashda Xatolik! Internetni tekshiring')
       console.error(error)
@@ -101,13 +101,13 @@ try {
     <div className='text-center mt-5'>
        <h1 className='mb-5'> Hujjatlardan online foydlalanish</h1>
        <input type="file" name='file' accept='.xlsx, .xls' className='form-control  m-auto w-mob' onChange={e=>setHujjat(e.target.files[0])}/>
-       <button className='btn btn-primary mt-3' onClick={HandleUpload}>Upload</button>
+       <button className='btn btn-primary mt-3' onClick={HandleUpload}>Upload <i className="fa-solid fa-cloud-arrow-up"></i></button>
    
       {
       msg && <span className='d-block my-3 fw-bold'>{msg}</span>
     }
     {
-      yulash &&  <button className='btn btn-success' onClick={fileDown}>Tayyor faylni yuklash!</button>
+      yulash &&  <button className='btn btn-success' onClick={fileDown}>Tayyor faylni yuklash! <i className="fa-solid fa-cloud-arrow-down"></i></button>
     }
     </div>
   )

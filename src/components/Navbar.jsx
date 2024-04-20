@@ -63,11 +63,12 @@ const Navbar = () => {
             className="btn btn-outline-secondary"
             href="mailto:vohidabdunazarov88@gmail.com"
           >
+          <i className="fa-solid fa-envelope"></i>
             Bog'lanish
           </a>
           {
             token? <div className="btn btn-group">
-            <button className="btn btn-danger" onClick={Chiqish}>Chiqish</button>
+            <button className="btn btn-danger" onClick={Chiqish}>Chiqish <i className="fa-solid fa-right-from-bracket"></i></button>
             {/* <button className="btn btn-info">Profile Sozlamalari</button> */}
             </div>:null
           }
