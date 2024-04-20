@@ -1,7 +1,7 @@
 import { useDispatch} from "react-redux"
 import { NavLink, useNavigate } from "react-router-dom"
 import auth, { logout } from "../slice/auth"
-
+import axios from 'axios'
 
 
 
@@ -13,8 +13,14 @@ const Navbar = () => {
 
 
   const Chiqish=async()=>{   
-      localStorage.clear()
-      dispatch(logout())
+      
+await axios.delete('https://shaxobiddin20.pythonanywhere.com/api/v1/user/logout/',{
+  headers:{
+    'Authorization':`Token ${token}`
+  }
+})
+localStorage.removeItem('token')
+      // dispatch(logout())
       navigate('/login')
   
   }

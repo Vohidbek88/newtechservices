@@ -30,25 +30,32 @@ const options = {
   }
 };
  await fetch(url, options)
-  .then( res => res.blob() )
+  .then( res => res.blob())
   .then( blob => {
-    var file = window.URL.createObjectURL(blob);
-    window.location.assign(file);
+    console.log(blob)
+    // var file = window.URL.createObjectURL(blob);
+    // window.location.assign(file);
+    const url = window.URL.createObjectURL(new Blob([blob]));
+    const link = document.createElement('a');
+link.href = url;
+link.setAttribute('download', `AmaliyotFayl.zip`);
+ document.body.appendChild(link);
+  link.click();
+  link.remove()
   });
 
-// window.open(`https://shaxobiddin20.pythonanywhere.com/api/v1/file/dow_word/?Token=${token}`)
 }
 
 
   const HandleUpload=async()=>{
 
    if(!fayl){
-    setMSg('No file selected!')
+    setMSg('Avval excel fayl tanlang!!')
     return
    }
 
 
-setMSg('Uploading...')
+setMSg('Serverga yuklanmoqda kuting...')
 
 const fd=new FormData()
 fd.append('excel_file',fayl)
@@ -58,10 +65,10 @@ try {
   // faylsuccesSet(String(data.yuklanadigan papka joyi))
   console.log(data);
   setYuklash(true)
-  setMSg('Yulash muvaffaqiyatli boldi!')
+  setMSg('Serverga yuklash muvaffaqiyatli boldi!')
   setHujjat(null)
 } catch (error) {
-  setMSg('Yuklashda Xatolik! Internetni tekshiring')
+  setMSg('Serverga Yuklashda Xatolik! Internet ulanishni tekshiring')
       console.error(error)
 }
   }
@@ -69,14 +76,18 @@ try {
   return (
     <div className='text-center mt-5'>
        <h1 className='mb-5'> Hujjatlardan online foydlalanish</h1>
+       <p className='text-danger'>O'quvchilarning amaliyot ma'lumotlarini Excel ko'rinishda yuklang!!!</p>
        <input type="file"  accept='.xlsx, .xls' className='form-control  m-auto w-mob' onChange={e=>setHujjat(e.target.files[0])}/>
-       <button className='btn btn-primary mt-3' onClick={HandleUpload}>Upload <i className="fa-solid fa-cloud-arrow-up"></i></button>
+       <button className='btn btn-primary mt-3' onClick={HandleUpload}>Serverga yuklash! <i className="fa-solid fa-cloud-arrow-up"></i></button>
    
       {
       msg && <span className='d-block my-3 fw-bold'>{msg}</span>
     }
     {
-      yulash &&  <button className='btn btn-success' onClick={fileDown}>Tayyor faylni yuklash! <i className="fa-solid fa-cloud-arrow-down"></i></button>
+      yulash &&  <div className='text-center'>
+         <p className='text-success'>O'quvchilarning amaliyot bo'yicha hujjatlari tayyor!</p>
+        <button className='btn btn-success' onClick={fileDown}>Tayyor faylni yuklash! <i className="fa-solid fa-cloud-arrow-down"></i></button>
+      </div>
     }
     </div>
   )

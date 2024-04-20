@@ -20,7 +20,7 @@ console.log(typeof token);
         platformasi
       </p>
       <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-       {token?<p className='alert alert-info'>Siz ro'yhatdan o'tgansiz</p>: <>
+       {token?<p className='alert alert-info'>Siz ro'yhatdan o'tgansiz!  <NavLink to='/hujjat' className="btn btn-link">Hujjat</NavLink></p>: <>
        <NavLink to="/signup" className="btn btn-primary btn-lg px-4">
         Sign Up
       </NavLink>
