@@ -13,7 +13,7 @@ const Navbar = () => {
 
 
   const Chiqish=async()=>{   
-      localStorage.removeItem('token')
+      localStorage.clear()
       dispatch(logout())
       navigate('/login')
   
@@ -62,9 +62,8 @@ const Navbar = () => {
           <a
             className="btn btn-outline-secondary"
             href="mailto:vohidabdunazarov88@gmail.com"
-          >
-          <i className="fa-solid fa-envelope"></i>
-            Bog'lanish
+          >Bog'lanish 
+          <i className="fa-solid fa-envelope"></i> 
           </a>
           {
             token? <div className="btn btn-group">

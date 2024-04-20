@@ -26,7 +26,7 @@ const Login = () => {
     try {
       const {data}= await $post(`user/login/`,userdata)
       console.log(data);
-      setItem('token',data.token)
+      localStorage.setItem('token',data.token)
       dispatch(signUserSuccess(data))
      
         navigate('/hujjat')
