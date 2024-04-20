@@ -13,13 +13,7 @@ const [msg,setMSg]=useState(null)
 const token=(localStorage.getItem('token'))
 
 const fileDown=async()=>{
-// const res=await axios.get(`https://shaxobiddin20.pythonanywhere.com/api/v1/file/dow_word/`,{
-//   headers:{
-//     'Authorization':`Token ${token}`
-//   }
-// })
-// console.log(res)
-// window.location.assign(`https://shaxobiddin20.pythonanywhere.com/api/v1/file/dow_word/?Token=${token}`);
+
 
 const url ='https://shaxobiddin20.pythonanywhere.com/api/v1/file/dow_word/'
 const authHeader =`Token ${token}` 
@@ -33,8 +27,6 @@ const options = {
   .then( res => res.blob())
   .then( blob => {
     console.log(blob)
-    // var file = window.URL.createObjectURL(blob);
-    // window.location.assign(file);
     const url = window.URL.createObjectURL(new Blob([blob]));
     const link = document.createElement('a');
 link.href = url;
@@ -42,6 +34,7 @@ link.setAttribute('download', `AmaliyotFayl.zip`);
  document.body.appendChild(link);
   link.click();
   link.remove()
+  setYuklash(false)
   });
 
 }
@@ -67,6 +60,7 @@ try {
   setYuklash(true)
   setMSg('Serverga yuklash muvaffaqiyatli boldi!')
   setHujjat(null)
+  document.querySelector('#empty').files = null
 } catch (error) {
   setMSg('Serverga Yuklashda Xatolik! Internet ulanishni tekshiring')
       console.error(error)
@@ -77,7 +71,7 @@ try {
     <div className='text-center mt-5'>
        <h1 className='mb-5'> Hujjatlardan online foydlalanish</h1>
        <p className='text-danger'>O'quvchilarning amaliyot ma'lumotlarini Excel ko'rinishda yuklang!!!</p>
-       <input type="file"  accept='.xlsx, .xls' className='form-control  m-auto w-mob' onChange={e=>setHujjat(e.target.files[0])}/>
+       <input type="file"  accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' id='empty' className='form-control  m-auto w-mob' onChange={e=>setHujjat(e.target.files[0])}/>
        <button className='btn btn-primary mt-3' onClick={HandleUpload}>Serverga yuklash! <i className="fa-solid fa-cloud-arrow-up"></i></button>
    
       {
