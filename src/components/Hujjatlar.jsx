@@ -60,7 +60,7 @@ try {
   setYuklash(true)
   setMSg('Serverga yuklash muvaffaqiyatli boldi!')
   setHujjat(null)
-  document.querySelector('#empty').files = null
+  
 } catch (error) {
   setMSg('Serverga Yuklashda Xatolik! Internet ulanishni tekshiring')
       console.error(error)
@@ -71,7 +71,7 @@ try {
     <div className='text-center mt-5'>
        <h1 className='mb-5'> Hujjatlardan online foydlalanish</h1>
        <p className='text-danger'>O'quvchilarning amaliyot ma'lumotlarini Excel ko'rinishda yuklang!!!</p>
-       <input type="file"  accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' id='empty' className='form-control  m-auto w-mob' onChange={e=>setHujjat(e.target.files[0])}/>
+       <input type="file"  accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel'  className='form-control  m-auto w-mob' onChange={e=>setHujjat(e.target.files[0])}/>
        <button className='btn btn-primary mt-3' onClick={HandleUpload}>Serverga yuklash! <i className="fa-solid fa-cloud-arrow-up"></i></button>
    
       {
@@ -80,7 +80,7 @@ try {
     {
       yulash &&  <div className='text-center'>
          <p className='text-success'>O'quvchilarning amaliyot bo'yicha hujjatlari tayyor!</p>
-        <button className='btn btn-success' onClick={fileDown}>Tayyor faylni yuklash! <i className="fa-solid fa-cloud-arrow-down"></i></button>
+        <button className='btn btn-success' onClick={fileDown} disabled={!yulash}>Tayyor faylni yuklash! <i className="fa-solid fa-cloud-arrow-down"></i></button>
       </div>
     }
     </div>
