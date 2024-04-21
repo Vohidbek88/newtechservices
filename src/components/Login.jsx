@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useNavigate } from "react-router-dom"
-import { signUserFailure, signUserStart, signUserSuccess } from "../slice/auth"
+import { signUserFailure, signUserStart, signUserSuccess,loginFailure } from "../slice/auth"
 import { useHttp } from "../service/httpRequest"
 
 
@@ -12,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const navigate=useNavigate()
   const dispatch=useDispatch()
-  const {isLoading,isLoggedin}=useSelector(state=>state.auth)
+  const {isLoading,isLoggedin,login_error}=useSelector(state=>state.auth)
   const submit=async(e)=>{
     e.preventDefault();
 
@@ -33,7 +33,9 @@ const Login = () => {
   
       
     } catch (error) {
-      dispatch(signUserFailure(error))
+
+      dispatch(loginFailure(error.message))
+      dispatch(signUserFailure(null))
     }
 
   
@@ -50,6 +52,9 @@ const Login = () => {
     <main className="form-signin w-mob m-auto">
   <form className="p-md-0 m-md-0 p-lg-4 m-lg-4" onSubmit={submit}>
     <h1 className="h3 mb-3 fw-normal">Please Login</h1>
+    {
+        login_error ? <p className='alert alert-danger'>Login yoki parol xato!</p>:''
+      }
     <div className="form-floating">
       <input
         type="email"

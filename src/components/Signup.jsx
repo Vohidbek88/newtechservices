@@ -6,7 +6,7 @@ import { signUserFailure, signUserStart, signUserSuccess } from "../slice/auth"
 import { useHttp } from "../service/httpRequest"
 const Signup = () => {
   const { $get , $post } = useHttp()
-  const {isLoading}=useSelector(state=>state.auth)
+  const {isLoading, sign_error}=useSelector(state=>state.auth)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [name, setName] = useState('')
@@ -36,7 +36,8 @@ dispatch(signUserStart())
 
         navigate('/login')
     } catch (error) {
-      dispatch(signUserFailure(error))
+      console.log(error)
+      dispatch(signUserFailure(error.message))
     }
 
    
@@ -51,6 +52,9 @@ return (
   <main className="form-signin w-mob m-auto">
     <form className="p-md-0 m-md-0 p-lg-4 m-lg-4" onSubmit={submit}>
       <h1 className="h3 mb-3 fw-normal">Please Sign Up</h1>
+      {
+        sign_error ? <p className='alert alert-danger'>Kiritilgan ma'lumotlarni qayta tekshiring!</p>:''
+      }
       <div className="form-floating">
         <input
           type="text"

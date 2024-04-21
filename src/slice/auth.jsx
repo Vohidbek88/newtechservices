@@ -4,7 +4,8 @@ const initialState = {
     isLoading: false,
     isLoggedin: false,
     user: null,
-    error: null,
+    sign_error: null,
+    login_error:null,
 }
 //hozircha bu yerga kelgani yoq
 export const authSlice = createSlice({
@@ -21,17 +22,20 @@ export const authSlice = createSlice({
             
 
         }, signUserFailure(state, actions) {
-
+           
             state.isLoading = false
-            state.error = actions.payload
+            state.sign_error = actions.payload
         },
         logout(state) {
             state.isLoggedin = false
             state.user = null
         },
+        loginFailure(state,action){
+            state.login_error=action.payload
+        }
 
     }
 })
 
-export const { signUserFailure, signUserStart, signUserSuccess, logout,hujjatloadaerFailre,hujjatloadaerStart,hujjatloadaerSucces } = authSlice.actions
+export const { signUserFailure, signUserStart, signUserSuccess, logout,loginFailure } = authSlice.actions
 export default authSlice.reducer
