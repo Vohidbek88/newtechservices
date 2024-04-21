@@ -1,6 +1,5 @@
 import { useDispatch} from "react-redux"
 import { NavLink, useNavigate } from "react-router-dom"
-import auth, { logout } from "../slice/auth"
 import axios from 'axios'
 
 

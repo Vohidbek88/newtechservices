@@ -1,10 +1,8 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+
 import { NavLink } from 'react-router-dom'
 
 const Home = () => {
 
-  
   
 const token=(localStorage.getItem('token'))
 console.log(typeof token);
