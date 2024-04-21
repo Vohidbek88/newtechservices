@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useHttp } from "../service/httpRequest"
-
+// import malumot from '/karochiye'
 
 const Hujjatlar = () => {
   const {  $post,$get } = useHttp()
@@ -71,6 +71,10 @@ try {
     <div className='text-center mt-5'>
        <h1 className='mb-5'> Hujjatlardan online foydlalanish</h1>
        <p className='text-danger'>O'quvchilarning amaliyot ma'lumotlarini Excel ko'rinishda yuklang!!!</p>
+       <div className='text-center'>
+       <p className='fw-bold'>Siz serverga yuklayotgan fayl quyidagi shablonga mos bo'lish kerak!</p>
+         <a href='./shablon.xlsx' className='btn btn-info mb-4'>Shablonni yuklash</a>
+       </div>
        <input type="file"  accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel'  className='form-control  m-auto w-mob' onChange={e=>setHujjat(e.target.files[0])}/>
        <button className='btn btn-primary mt-3' onClick={HandleUpload}>Serverga yuklash! <i className="fa-solid fa-cloud-arrow-up"></i></button>
    
