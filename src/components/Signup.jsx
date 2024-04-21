@@ -51,7 +51,7 @@ dispatch(signUserStart())
 return (
   <main className="form-signin w-mob m-auto">
     <form className="p-md-0 m-md-0 p-lg-4 m-lg-4" onSubmit={submit}>
-      <h1 className="h3 mb-3 fw-normal">Please Sign Up</h1>
+      <h1 className="h3 mb-3 fw-normal">Ro'yhatdan O'ting</h1>
       {
         sign_error ? <p className='alert alert-danger'>Kiritilgan ma'lumotlarni qayta tekshiring!</p>:''
       }
@@ -83,7 +83,7 @@ return (
           placeholder="name@example.com"
           onChange={e => setEmail(e.target.value)}
         />
-        <label htmlFor="floatingInput">Email address</label>
+        <label htmlFor="floatingInput">Emailni kiriting</label>
       </div>
       <div className="form-floating">
         <input
@@ -104,10 +104,10 @@ return (
           placeholder="Password Confirm"
           onChange={e => setConfirmpassword(e.target.value)}
         />
-        <label htmlFor="floatingPasswordConfirm">Password Confirm</label>
+        <label htmlFor="floatingPasswordConfirm">Passwordni takrorlang</label>
       </div>
       <button disabled={isLoading} className="btn btn-primary w-100 py-2 mt-2" type="submit">
-        Sign in
+        Ro'yhatdan o'tish
       </button>
       <p className="mt-2">
         Ro'yhatdan O'tkanmisiz{" "}

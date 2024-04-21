@@ -51,7 +51,7 @@ const Login = () => {
   return (
     <main className="form-signin w-mob m-auto">
   <form className="p-md-0 m-md-0 p-lg-4 m-lg-4" onSubmit={submit}>
-    <h1 className="h3 mb-3 fw-normal">Please Login</h1>
+    <h1 className="h3 mb-3 fw-normal">Login bilan kiring</h1>
     {
         login_error ? <p className='alert alert-danger'>Login yoki parol xato!</p>:''
       }
@@ -63,7 +63,7 @@ const Login = () => {
         placeholder="name@example.com"
         onChange={e=>setEmail(e.target.value)}
       />
-      <label htmlFor="floatingInput">Email address</label>
+      <label htmlFor="floatingInput">Emailni kiriting</label>
     </div>
     <div className="form-floating">
 
@@ -82,7 +82,7 @@ const Login = () => {
     <p className="mt-2">
       Ro'yhatdan O'tmagamisiz{" "}
       <NavLink to="/signup" className="btn btn-link">
-        Sign Up
+        Ro'yhatdan o'tish
       </NavLink>
     </p>
   </form>
